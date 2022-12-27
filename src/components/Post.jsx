@@ -40,9 +40,11 @@ export function Post({author, publishedAt, content}){
         //imutabilidade => as variaveis não sofrem mutação, 
         //nós criamos um novo valor(um novo espaço na memoria)
         const commentsWithoutDeletedOne =  comments.filter(comment => {
-            return comment ==! commentToDelete
+            return comment !== commentToDelete;
         })
         setComments(commentsWithoutDeletedOne);
+
+        console.log("apaguei")
     }
 
     return(
@@ -84,6 +86,8 @@ export function Post({author, publishedAt, content}){
                     placeholder='Deixe um comentário'
                     value={newCommentText}
                     onChange={handleNewCommentChange}
+                    onIn
+                    required
                 />
 
                 <footer>
